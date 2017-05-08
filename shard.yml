@@ -1,0 +1,6 @@
+name: isup
+version: 0.0.1
+
+targets:
+  isup:
+    main: src/isup.cr
