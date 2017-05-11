@@ -12,7 +12,7 @@ module Isup
   end
 
   def self.success(uri, response)
-    print "  ✓ #{response.status_code} ".colorize(:green).mode(:bold)
+    print "  ✔ #{response.status_code} ".colorize(:green).mode(:bold)
     puts uri
   end
 
@@ -55,8 +55,8 @@ module Isup
     end
 
     do_request(ARGV.first)
-  rescue exception : Errno | Socket::Error
-    error(exception)
+  rescue ex : Exception
+    error(ex)
   end
 end
 
