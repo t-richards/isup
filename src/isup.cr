@@ -40,7 +40,9 @@ module Isup
 
     if redirect?(response.status_code)
       success(uri, response)
-      return do_request(response.headers["Location"])
+      new_uri = URI.parse(response.headers["Location"])
+      uri.path = new_uri.path
+      return do_request(uri.to_s)
     elsif valid_response_code?(response.status_code)
       return success(uri, response)
     end
